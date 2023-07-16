@@ -1,0 +1,33 @@
+.side__item--subitem {
+    padding: .4rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.side__item--subitem i {
+    font-size: .7rem;
+    color: var(--text-color-2);
+}
+
+.side__item--subitem span {
+    font-size: .8rem;
+    color: var(--text-color-2);
+    font-weight: 600;
+    line-height: 1rem;
+    transition: all .3s ease-in-out;
+}
+
+.side__item--subitem:hover span,
+.side__item--subitem:hover i {
+    color: var(--text-color-1);
+}
+
+.side__item--subitem.active {
+    border-right: 2px solid var(--primary-color);
+}
+
+.side__item--subitem.active span,
+.side__item--subitem.active i {
+    color: var(--primary-color);
+}

@@ -1,0 +1,115 @@
+.banner {
+    display: flex;
+    height: 50%;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.banner__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    height: 80%;
+    padding-left: 1.5rem;
+}
+
+.banner__content__title {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--text-color-2);
+    margin-bottom: 1rem;
+}
+
+.banner__content__song {
+    width: 100%;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--text-color-2);
+}
+
+.banner__content__artist {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-top: .2rem;
+    padding-bottom: 1rem;
+    color: var(--text-color-2);
+
+}
+.banner__content__artist--plays {
+    font-size: 1rem;
+    color: var(--text-color-1);
+    margin-left: 2rem;
+}
+
+.banner__content__buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.banner__content__buttons__play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: var(--text-color-2);
+    margin-right: 1rem;
+    padding: .6rem 1.2rem;
+    border-radius: 20px;
+    font-size: .8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.banner__content__buttons__play:hover {
+    opacity: .8;
+}
+
+.banner__content__buttons__favorite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    margin-right: 1rem;
+    padding: .5rem;
+    border-radius: 50%;
+    border: 2px solid var(--text-color-2);
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--text-color-2);
+    cursor: pointer;
+}
+
+.banner__content__buttons__favorite:hover {
+    opacity: .5;
+}
+
+.banner__content__buttons__favorite.active {
+    color: var(--primary-color);
+}
+
+.banner__image {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-radius: 0 0 0 20px;
+}
+
+.banner__image img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 28%;
+}

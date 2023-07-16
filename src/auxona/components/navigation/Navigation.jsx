@@ -1,0 +1,24 @@
+import { Avatar } from "./avatar/Avatar"
+
+import './Navigation.css'
+
+export const Navigation = () => {
+    return (
+        <div className='navigation'>
+            <ul className='navigation__list'>
+                <li className='navigation__list__item active'>Music</li>
+                <li className='navigation__list__item'>Podcast</li>
+                <li className='navigation__list__item'>Live</li>
+            </ul>
+            <div className='navigation__search'>
+                <div className='navigation__search__icon'>
+                    <i className="bi bi-search"></i>
+                    <input type="text" placeholder='Type here to search' className='navigation__search__input' />
+                </div>
+            </div>
+            <div className='navigation__avatar'>
+                <Avatar />
+            </div>
+        </div>
+    )
+}

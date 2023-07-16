@@ -1,9 +1,9 @@
-import { AuxonaThemeProvider } from "./theme"
+import { AuxonaRouter } from "./router/AuxonaRouter"
 
 export const AuxonaApp = () => {
     return (
-        <AuxonaThemeProvider>
-            <div>AuxonaApp</div>
-        </AuxonaThemeProvider>
+        <>
+            <AuxonaRouter />
+        </>
     )
 }
