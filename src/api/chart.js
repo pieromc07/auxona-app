@@ -7,7 +7,6 @@ export const Chart = async () => {
 
     const resp = await axios.get(URL);
     const { data } = resp.data;
-    console.log(data);
     return {
         tracks: data.tracks.data,
         albums: data.albums.data,

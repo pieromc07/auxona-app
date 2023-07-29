@@ -1,10 +1,32 @@
 import { Image } from '../image/Image'
 import { PropTypes } from 'prop-types'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { getPlayer, setPlay } from '../../../store/reducers/player'
 import banner from '../../../assets/images/banner.svg'
+
 import './Banner.css'
 
-export const Banner = ({ title, artist, isfavorite }) => {
+export const Banner = ({ title, artist, isfavorite, song }) => {
+
+    const { isPlaying } = useSelector(state => state.player)
+
+    const dispatch = useDispatch()
+
+    const handleListenNow = () => {
+        if (isPlaying) {
+            dispatch(setPlay({ isPlaying: false }))
+            dispatch(getPlayer(song))
+            setTimeout(() => {
+                dispatch(setPlay({ isPlaying: true }))
+            }, 2000);
+        } else {
+            dispatch(getPlayer(song))
+            setTimeout(() => {
+                dispatch(setPlay({ isPlaying: true }))
+            }, 2000);
+        }
+    }
+
     return (
         <div className='banner'>
             <div className='banner__content'>
@@ -22,7 +44,7 @@ export const Banner = ({ title, artist, isfavorite }) => {
                 </span>
 
                 <div className='banner__content__buttons'>
-                    <button className='banner__content__buttons__play'>
+                    <button className='banner__content__buttons__play' onClick={handleListenNow}>
                         Listen Now
                     </button>
                     {
@@ -47,6 +69,7 @@ export const Banner = ({ title, artist, isfavorite }) => {
 Banner.propTypes = {
     title: PropTypes.string.isRequired,
     artist: PropTypes.string.isRequired,
-    isfavorite: PropTypes.bool.isRequired
+    isfavorite: PropTypes.bool.isRequired,
+    song: PropTypes.number.isRequired
 }
 

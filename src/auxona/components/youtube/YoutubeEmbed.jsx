@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import YouTube from 'react-youtube';
 import { setCurrentTime, setDuration, setReady, setStarted, setPlay, setVolume, setChangeTime } from '../../../store/reducers/player';
 
-export const YoutubeEmbed = ({ embedId }) => {
+export const YoutubeEmbed = ({ embedId = 'E9gJknKWn18' }) => {
 
     const {
         isLoading,
@@ -50,10 +50,10 @@ export const YoutubeEmbed = ({ embedId }) => {
 
     // NOTE: Eventos del IFrame
     const _onReady = (event) => {
-        dispatch(setReady({ isReady: true }))
         dispatch(setDuration({ duration: event.target.getDuration() }))
         setPlayer(event.target)
         dispatch(setVolume({ volume: event.target.getVolume() }))
+        dispatch(setReady({ isReady: true }))
     }
 
     const _onStateChange = (event) => {
@@ -80,8 +80,13 @@ export const YoutubeEmbed = ({ embedId }) => {
 
     // NOTE: Se ejecuta cada vez que cambia el estado de isPlaying
     useEffect(() => {
-        if (isReady)
-            isPlaying ? handlePlay() : handlePause()
+        if (isReady) {
+            if (isPlaying) {
+                handlePlay()
+            } else {
+                handlePause()
+            }
+        }
     }, [isPlaying, isReady])
 
     // NOTE: Se ejecuta cada vez que cambia el embebId
@@ -89,18 +94,20 @@ export const YoutubeEmbed = ({ embedId }) => {
         if (!isLoading) {
             handleLoad(embedId)
         }
-    }, [embedId, isLoading])
+    }, [embedId])
 
     // NOTE: Se ejecuta cada vez que cambia el currentTime
     useEffect(() => {
-        if (isReady && isStarted) {
+        if (isReady) {
             if (ischangeTime) {
                 player.seekTo(currentTime)
                 dispatch(setChangeTime({ ischangeTime: false }))
             } else {
-                setTimeout(() => {
-                    dispatch(setCurrentTime({ currentTime: player.getCurrentTime() }))
-                }, 100);
+                if (isStarted) {
+                    setTimeout(() => {
+                        dispatch(setCurrentTime({ currentTime: player.getCurrentTime() }))
+                    }, 100);
+                }
             }
         }
         return () => {

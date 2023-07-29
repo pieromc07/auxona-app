@@ -4,11 +4,12 @@ import { useChart } from "../../../hooks/useChart"
 import './Home.css'
 
 import { Link } from "react-router-dom"
+import { CardPlay } from "../../components/cardPlay/CardPlay"
 
 
 export const HomePage = () => {
 
-    const { artists, playlists, banner, isLoading } = useChart()
+    const { artists, playlists, banner, isLoading, tracks } = useChart()
 
     return (
         <AuxonaLayout>
@@ -17,36 +18,39 @@ export const HomePage = () => {
                     <h1>Loading...</h1>
                     :
                     <div className='home'>
-                        <Banner title={banner.title} artist={banner.artist} isfavorite={banner.isFavorite} />
+                        <Banner title={banner.title} artist={banner.artist} isfavorite={banner.isFavorite} song={banner.id} />
                         <div className='home__content'>
                             <div className="home__content--box">
-                                <div className="topArtists">
+                                <div className="content__box--60">
+
                                     <BoxRow title='Top Artists'>
                                         {artists.map((artist) => (
-                                            (artist.position <= 6) &&
+                                            (artist.position <= 7) &&
                                             <Link to={`/artist/${artist.id}`} key={artist.id}>
                                                 <Card key={artist.id} image={artist.picture_xl} title={artist.name} subtitle={`Rank #${artist.position}`} />
                                             </Link>
                                         ))}
                                     </BoxRow>
-                                </div>
-                                <div className="topCharts">
-                                    <BoxColumn title='
-                                    Top Artists'>
-                                        {artists.map((artist) => (
-                                            <Card key={artist.id} image={artist.picture_xl} title={artist.name} subtitle={`Rank #${artist.position}`} />
-                                        ))}
-                                    </BoxColumn>
-                                </div>
-                                <div className="topPlaylists">
+
+
                                     <BoxRow title='Top Playlists'>
                                         {playlists.map((playlist, index) => (
-                                            (index <= 5) &&
+                                            (index <= 6) &&
                                             <Link to={`/playlist/${playlist.id}`} key={playlist.id}>
                                                 <Card key={playlist.id} image={playlist.picture_xl} title={playlist.title} subtitle={`Tracks #${playlist.nb_tracks}`} />
                                             </Link>
                                         ))}
                                     </BoxRow>
+
+                                </div>
+                                <div className="content__box--40">
+                                    <BoxColumn title='
+                                    Top Artists'>
+                                        {tracks.map((track) => (
+                                            (track.position <= 8) &&
+                                            <CardPlay key={track.id} track={track} />
+                                        ))}
+                                    </BoxColumn>
                                 </div>
                             </div>
                         </div>

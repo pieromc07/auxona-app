@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import { Chart } from '../api'
 import { useDispatch } from 'react-redux'
@@ -7,7 +8,7 @@ import { getPlayer } from '../store/reducers/player'
 export const useChart = () => {
 
     const [charts, setCharts] = useState({
-        tracks:[],
+        tracks: [],
         albums: [],
         artists: [],
         playlists: [],
@@ -15,7 +16,7 @@ export const useChart = () => {
         banner: {}
     })
 
-   const dispatch =  useDispatch()
+    const dispatch = useDispatch()
 
     const [isLoading, setIsLoading] = useState(true)
 
@@ -39,11 +40,13 @@ export const useChart = () => {
                     banner
                 }
             ))
+            .then(() => {
+               setTimeout(() => {
+                    dispatch(getPlayer(charts.banner.id))
+                }, 1000)
+            })
             .then(() => setIsLoading(false))
-
-        dispatch(getPlayer(charts.banner.id))
-        
-    }, [charts.banner.id, dispatch])
+    }, [charts.banner.id])
     return {
         charts,
         ...charts,
