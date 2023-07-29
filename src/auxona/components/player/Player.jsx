@@ -1,57 +1,82 @@
-
-import { dataPlayer } from '../../libs'
+import { useDispatch, useSelector } from 'react-redux'
+import { setMuted, setPlay } from '../../../store/reducers/player/'
+import { YoutubeEmbed } from '../youtube/YoutubeEmbed'
+import { Timer } from './progress/Timer'
+import { Progress } from './progress/Progress'
+import { Control } from './control/Control'
+import { Bar } from './volume/Bar'
 
 import './Player.css'
+import { Cover } from './cover/Cover'
 
 export const Player = () => {
+
+    const {
+        youTubeId,
+        cover,
+        title,
+        artist,
+        isPlaying,
+        currentTime,
+        duration,
+        isMuted
+    } = useSelector(state => state.player)
+
+    const dispatch = useDispatch()
+
+    const onPlay = () => {
+        dispatch(setPlay({ isPlaying: true }))
+    }
+
+    const onPause = () => {
+        dispatch(setPlay({ isPlaying: false }))
+    }
+
+    const onVolume = () => {
+        dispatch(setMuted({ isMuted: false }))
+    }
+
+    const onMute = () => {
+        dispatch(setMuted({ isMuted: true }))
+    }
+
+    const onForward = () => {
+        console.log('Forward')
+    }
+
+    const onBackward = () => {
+        console.log('Backward')
+    }
+
     return (
         <div className="player">
             <div className="player__cover">
-                <div className="player__cover--image">
-                    <img src={dataPlayer.image.src} alt="cover" />
-                </div>
-                <div className="player__cover--info">
-                    <span className="cover__info--song">
-                        {dataPlayer.title}
-                    </span>
-                    <span className="cover__info--artist">
-                        {dataPlayer.artist}
-                    </span>
-                </div>
+                <Cover cover={cover} title={title} artist={artist} />
             </div>
             <div className="player__controls">
-                <button className="controls__button controls__button--backward">
-                    <i className="bi bi-skip-start-fill"></i>
-                </button>
-                <button className="controls__button controls__button--pause">
-                    <i className="bi bi-pause-fill"></i>
-                </button>
-                <button className="controls__button controls__button--play hide">
-                    <i className="bi bi-play-fill"></i>
-                </button>
-                <button className="controls__button controls__button--forward">
-                    <i className="bi bi-skip-end-fill"></i>
-                </button>
-
+                <Control icon={'bi bi-skip-start-fill'} control={'backward'} handleControl={onBackward} />
+                {isPlaying ?
+                    <Control icon={'bi bi-pause-fill'} control={'pause'} handleControl={onPause} />
+                    :
+                    <Control icon={'bi bi-play-fill'} control={'play'} handleControl={onPlay} />
+                }
+                <Control icon={'bi bi-skip-end-fill'} control={'forward'} handleControl={onForward} />
             </div>
             <div className="player__progress">
-                {/* Timer initial */}
-                <span className="player__progress--timer">0:00</span>
-                {/* Progress bar */}
-                <div className="player__progress--bar">
-                    <input type="range" min="0" max="100" value="0" className="player__progress--bar-input" />
-                </div>
-                {/* Timer final */}
-                <span className="player__progress--timer">0:00</span>
+                <Timer timer={currentTime} />
+                <Progress />
+                <Timer timer={duration} />
             </div>
             <div className="player__volume">
-                <button className="controls__button controls__button--volume">
-                    <i className="bi bi-volume-mute-fill"></i>
-                </button>
-                <div className="player__volume--bar">
-                    <input type="range" min="0" max="100" value="0" className="player__volume--bar-input" />
-                </div>
+                {/* Mute/Unmute */}
+                {isMuted ?
+                    <Control icon={'bi bi-volume-mute-fill'} control={'volume'} handleControl={onVolume} />
+                    :
+                    <Control icon={'bi bi-volume-up-fill'} control={'volume'} handleControl={onMute} />
+                }
+                <Bar />
             </div>
+            <YoutubeEmbed embedId={youTubeId} />
         </div>
     )
 }

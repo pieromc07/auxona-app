@@ -14,7 +14,7 @@ export const AuxonaLayout = ({ children }) => {
             </main>
             <Player />
         </div>
-    )
+    );
 }
 
 AuxonaLayout.propTypes = {

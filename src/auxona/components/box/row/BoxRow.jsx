@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types'
 import './BoxRow.css'
 
 
+
 export const BoxRow = ({ title, children }) => {
     return (
         <div className="boxrow">

@@ -4,19 +4,23 @@ export const navegacion = [
         subItems: [
             {
                 icon: 'bi bi-compass-fill',
-                link: 'Explore'
+                link: 'Explore',
+                url: '/'
             },
             {
                 icon: 'bi bi-volume-down-fill',
-                link: 'Genres'
+                link: 'Genres',
+                url: '/genre'
             },
             {
                 icon: 'bi bi-disc-fill',
-                link: 'Albums'
+                link: 'Albums',
+                url: '/album'
             },
             {
                 icon: 'bi bi-mic-fill',
-                link: 'Artists'
+                link: 'Artists',
+                url: '/artist'
             }
         ]
     },

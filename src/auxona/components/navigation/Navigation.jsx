@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Avatar } from "./avatar/Avatar"
 
 import './Navigation.css'
@@ -6,9 +7,9 @@ export const Navigation = () => {
     return (
         <div className='navigation'>
             <ul className='navigation__list'>
-                <li className='navigation__list__item active'>Music</li>
-                <li className='navigation__list__item'>Podcast</li>
-                <li className='navigation__list__item'>Live</li>
+                <Link to="/" className='navigation__list__item active'>Music</Link>
+                <Link to="/podcast"className='navigation__list__item'>Podcast</Link>
+                {/* <li className='navigation__list__item'>Live</li> */}
             </ul>
             <div className='navigation__search'>
                 <div className='navigation__search__icon'>

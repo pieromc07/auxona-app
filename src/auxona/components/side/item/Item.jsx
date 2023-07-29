@@ -9,7 +9,7 @@ export const Item = ({subItems, title}) => {
       <li className="side__item--title"
       >{title}</li>
       {subItems.map((item, index) => (
-        <SubItem key={index} icon={item.icon} link={item.link} />
+        <SubItem key={index} icon={item.icon} link={item.link} url={item.url} />
       ))}
     </ul>
   )

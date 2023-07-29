@@ -1,16 +1,17 @@
 import { PropTypes } from 'prop-types'
-
 import { Image } from '../image/Image'
-
 import './Card.css'
+
 export const Card = ({ image, title, subtitle }) => {
     return (
         <div className="card">
             <div className="card__image">
-                <Image src={image.src} alt={image.alt} />
+                <Image src={image} alt={title} />
             </div>
             <div className="card__content">
-                <h3 className="card__content--title">{title}</h3>
+                <h3 className="card__content--title">
+                    {title.length > 10 ? title.substring(0, 10) + '...' : title}
+                </h3>
                 <span className="card__content--subtitle">{subtitle}</span>
             </div>
         </div>
@@ -19,5 +20,5 @@ export const Card = ({ image, title, subtitle }) => {
 Card.propTypes = {
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired
+    subtitle: PropTypes.any.isRequired
 }

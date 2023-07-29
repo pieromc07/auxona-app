@@ -1,16 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import { AuxonaApp } from './AuxonaApp'
+import { store } from './store';
+import { AuxonaApp } from './AuxonaApp';
 
-import './index.css'
+import './index.css';
 
-import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <BrowserRouter>
-            <AuxonaApp />
+            <Provider store={store}>
+                <AuxonaApp />
+            </Provider>
         </BrowserRouter>
     </React.StrictMode>,
 )

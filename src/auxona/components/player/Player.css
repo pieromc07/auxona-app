@@ -167,3 +167,8 @@
     outline: none;
     border: none;
 }
+
+
+.video-responsive{
+    display: none;
+}
