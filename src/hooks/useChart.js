@@ -41,7 +41,7 @@ export const useChart = () => {
                 }
             ))
             .then(() => {
-               setTimeout(() => {
+                setTimeout(() => {
                     dispatch(getPlayer(charts.banner.id))
                 }, 1000)
             })

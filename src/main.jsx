@@ -8,7 +8,6 @@ import { AuxonaApp } from './AuxonaApp';
 
 import './index.css';
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <BrowserRouter>

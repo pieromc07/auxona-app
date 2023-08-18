@@ -1,7 +1,7 @@
 import { PropTypes } from "prop-types"
 import { SubItem } from "../subItem/SubItem"
 
-import "./item.css"
+import './Item.css'
 
 export const Item = ({subItems, title}) => {
   return (

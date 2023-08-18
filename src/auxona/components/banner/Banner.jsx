@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Image } from '../image/Image'
 import { PropTypes } from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
@@ -47,7 +48,7 @@ export const Banner = ({ title, artist, isfavorite, song }) => {
                     <button className='banner__content__buttons__play' onClick={handleListenNow}>
                         Listen Now
                     </button>
-                    {
+                    { /*
                         isfavorite ?
                             <button className='banner__content__buttons__favorite active'>
                                 <i className='bi bi-heart-fill'></i>
@@ -56,7 +57,7 @@ export const Banner = ({ title, artist, isfavorite, song }) => {
                             <button className='banner__content__buttons__favorite'>
                                 <i className='bi bi-heart'></i>
                             </button>
-                    }
+                    */}
                 </div>
             </div>
             <div className='banner__image'>

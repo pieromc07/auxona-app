@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import { HomePage } from "../pages"
+import { HomePage, PlayListDetailPage, PlayListPage } from "../pages"
 
 export const AuxonaRoutes = () => {
     return (
@@ -11,8 +11,8 @@ export const AuxonaRoutes = () => {
             <Route path="/album/:id" element={<h1>Album Detail</h1>} />
 
             {/* Playlist */}
-            <Route path="/playlist" element={<h1>Playlist</h1>} />
-            <Route path="/playlist/:id" element={<h1>Playlist Detail</h1>} />
+            <Route path="/playlist" element={<PlayListPage />} />
+            <Route path="/playlist/:id" element={<PlayListDetailPage />} />
 
             {/* Artist */}
             <Route path="/artist" element={<h1>Artist</h1>} />

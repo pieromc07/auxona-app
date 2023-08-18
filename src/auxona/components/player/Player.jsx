@@ -5,9 +5,9 @@ import { Timer } from './progress/Timer'
 import { Progress } from './progress/Progress'
 import { Control } from './control/Control'
 import { Bar } from './volume/Bar'
+import { Cover } from './cover/Cover'
 
 import './Player.css'
-import { Cover } from './cover/Cover'
 
 export const Player = () => {
 

@@ -1,18 +1,22 @@
 import { Banner, BoxColumn, BoxRow, Card } from "../../components"
-import { AuxonaLayout } from "../../layout/AuxonaLayout"
-import { useChart } from "../../../hooks/useChart"
 import './Home.css'
-
 import { Link } from "react-router-dom"
 import { CardPlay } from "../../components/cardPlay/CardPlay"
+import { useSelector } from "react-redux"
 
 
 export const HomePage = () => {
 
-    const { artists, playlists, banner, isLoading, tracks } = useChart()
+    const {
+        banner,
+        artists,
+        playlists,
+        tracks,
+        isLoading
+    } = useSelector(state => state.chart)
 
     return (
-        <AuxonaLayout>
+        <>
             {
                 isLoading ?
                     <h1>Loading...</h1>
@@ -56,6 +60,7 @@ export const HomePage = () => {
                         </div>
                     </div>
             }
-        </AuxonaLayout >
+        </>
+
     )
 }
