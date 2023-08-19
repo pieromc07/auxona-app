@@ -2,9 +2,10 @@ import { useEffect } from "react"
 import { Navigation, Player, Side } from "./auxona/components"
 import { navegacion } from "./auxona/libs"
 import { AuxonaRoutes } from "./auxona/routes"
-import './AuxonaApp.css'
 import { useDispatch } from "react-redux"
 import { getStarted } from "./store"
+
+import './AuxonaApp.css'
 
 export const AuxonaApp = () => {
 

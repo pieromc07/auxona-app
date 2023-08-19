@@ -26,7 +26,6 @@ export const HomePage = () => {
                         <div className='home__content'>
                             <div className="home__content--box">
                                 <div className="content__box--60">
-
                                     <BoxRow title='Top Artists'>
                                         {artists.map((artist) => (
                                             (artist.position <= 7) &&
@@ -35,8 +34,6 @@ export const HomePage = () => {
                                             </Link>
                                         ))}
                                     </BoxRow>
-
-
                                     <BoxRow title='Top Playlists'>
                                         {playlists.map((playlist, index) => (
                                             (index <= 6) &&
@@ -45,7 +42,6 @@ export const HomePage = () => {
                                             </Link>
                                         ))}
                                     </BoxRow>
-
                                 </div>
                                 <div className="content__box--40">
                                     <BoxColumn title='

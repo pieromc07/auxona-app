@@ -76,6 +76,14 @@ export const Player = () => {
                 }
                 <Bar />
             </div>
+            <div className="player__extra">
+                <div className="player__extra__icon">
+                    {/* <i className="bi bi-box-arrow-up"></i> */}
+                    <button className="player__extra__icon__button">
+                        <i className="bi bi-box-arrow-up"></i>
+                    </button>
+                </div>
+            </div>
             <YoutubeEmbed embedId={youTubeId} />
         </div>
     )

@@ -59,11 +59,6 @@ export const YoutubeEmbed = ({ embedId = 'E9gJknKWn18' }) => {
     const _onStateChange = (event) => {
         const { data } = event
         console.log(data)
-        // if(data === 2){
-        //     if(isStarted){
-        //         dispatch(setPlay({ isStarted: false }))
-        //     }
-        // }
     }
 
     const _onPlay = (event) => {
@@ -73,7 +68,6 @@ export const YoutubeEmbed = ({ embedId = 'E9gJknKWn18' }) => {
 
     const _onPuse = (event) => {
         dispatch(setStarted({ isStarted: false }))
-        dispatch(setPlay({ isPlaying: false }))
     }
 
     const _onEnd = (event) => {
