@@ -19,15 +19,21 @@ export const AuxonaApp = () => {
         setSideShow(!sideShow)
     }
 
+    const [showPlayer, setShowPlayer] = useState(false);
+
+    const handleShowPlayer = () => {
+        setShowPlayer(!showPlayer)
+    }
+
     return (
         <>
-            <div className='wrapper'>
+            <div className={`wrapper ${showPlayer ? 'wrapper--player' : ''}`}>
                 <Navigation sideShow={handleSideShow} />
-                <Side menu={navegacion}  show={sideShow} sideShow={handleSideShow} />
+                <Side menu={navegacion} show={sideShow} sideShow={handleSideShow} />
                 <main className='main'>
                     <AuxonaRoutes />
                 </main>
-                <Player />
+                <Player show={showPlayer} setShow={handleShowPlayer} />
             </div>
         </>
     )

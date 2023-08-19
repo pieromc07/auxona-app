@@ -138,32 +138,170 @@
         justify-content: center;
     }
 
-    .player__extra .player__extra__icon{
+    .player__extra__button {
+        width: 30px;
+        height: 30px;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+        color: var(--text-color-2);
+        font-size: 1rem;
+    }
+
+    .player__extra__button:hover {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+    }
+
+    .player__extra__button.extra--down{
+        display: none;
+    }
+    .player__extra__title{
+        display: none;
+    }
+
+    /* ** PLAYER BG */
+    .player.player--bg {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, .3fr) repeat(4, 1fr) repeat(4, .3fr);
+        grid-template-rows: .2fr repeat(3, .3fr) .2fr .4fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+
+    }
+
+    .player.player--bg .player__cover {
+        grid-area: 2 / 5 / 5 / 9;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .player.player--bg .player__cover--image {
+        width: 100%;
+        height: 80%;
+        display: flex;
+        align-items: self-start;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+    .player.player--bg .player__cover--image img {
+        width: 90%;
+        height: 90%;
+        object-fit: fill;
+        border-radius: 10px;
+    }
+
+    .player.player--bg .player__cover--info {
+        display: flex;
+        width: 100%;
+        height: 20%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .player.player--bg .cover__info--song {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: var(--text-color-2);
+        letter-spacing: 1px;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .player.player--bg .cover__info--artist {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: var(--text-color-2);
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    .player.player--bg .player__extra {
+        grid-area:  1 / 1 / 2 / 13;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+    .player.player--bg .player__extra__title{
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-color-2);
+        letter-spacing: 1px;
+        line-height: 1.5;
+        text-align: center;
+    }
+    .player.player--bg .player__extra__button.extra--up{
+        display: none;
+    }
+    .player.player--bg .player__extra__button.extra--down{
+        display: block;
+    }
+
+    .player.player--bg .player__controls {
+        grid-area:6 / 1 / 7 / 13;
         width: 100%;
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--text-color-2);
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all .3s ease-in-out;
-        padding: 0;
-        margin: 0;
+        gap: 1rem;
+        background-color: var(--primary-color);
     }
-    .player__extra__icon__button{
-        width: 20px;
-        height: 20px;
+
+    .player.player--bg .controls__button {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+        background-color : var(--box-text-color);
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 2rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--text-color-2);
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all .3s ease-in-out;
-        padding: 0;
-        margin: 0;
+        border-radius: 10px;
     }
+
+    .player.player--bg .controls__button.controls__button--backward,
+    .player.player--bg .controls__button.controls__button--forward {
+        background-color: transparent;
+        font-size: 1.7rem;
+        display: block;
+        color: var(--text-color-2);
+    }
+
+    .player.player--bg .player__progress {
+        grid-area: 5 / 1 / 6 / 13;
+        width: 100%;
+        height: 100%;
+        padding: 0 1rem;
+   
+    }
+
+    .player.player--bg .player__progress--timer{
+        display: block;
+        width: auto;
+    }
+
+    .player.player--bg .player__progress--bar{
+        width: 80%;
+        height: 100%;
+        margin: 0 1rem;
+    }
+
+
 }
 
 /* MEDIA QUERY LG */
@@ -343,7 +481,8 @@
         outline: none;
         border: none;
     }
-    .player__extra{
+
+    .player__extra {
         display: none;
     }
 }

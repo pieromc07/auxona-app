@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
 import { setMuted, setPlay } from '../../../store/reducers/player/'
 import { YoutubeEmbed } from '../youtube/YoutubeEmbed'
 import { Timer } from './progress/Timer'
@@ -9,7 +10,7 @@ import { Cover } from './cover/Cover'
 
 import './Player.css'
 
-export const Player = () => {
+export const Player = ({show, setShow}) => {
 
     const {
         youTubeId,
@@ -21,6 +22,7 @@ export const Player = () => {
         duration,
         isMuted
     } = useSelector(state => state.player)
+
 
     const dispatch = useDispatch()
 
@@ -49,7 +51,7 @@ export const Player = () => {
     }
 
     return (
-        <div className="player">
+        <div className={`player ${show ? 'player--bg' : ''}`}>
             <div className="player__cover">
                 <Cover cover={cover} title={title} artist={artist} />
             </div>
@@ -77,14 +79,23 @@ export const Player = () => {
                 <Bar />
             </div>
             <div className="player__extra">
-                <div className="player__extra__icon">
-                    {/* <i className="bi bi-box-arrow-up"></i> */}
-                    <button className="player__extra__icon__button">
-                        <i className="bi bi-box-arrow-up"></i>
-                    </button>
-                </div>
+                <h3 className="player__extra__title">
+                    Auxona
+                </h3>
+
+                <button className="player__extra__button extra--down" onClick={setShow}>
+                    <i className="bi bi-box-arrow-down"></i>
+                </button>
+                <button className="player__extra__button extra--up" onClick={setShow}>
+                    <i className="bi bi-box-arrow-up"></i>
+                </button>
             </div>
             <YoutubeEmbed embedId={youTubeId} />
         </div>
     )
+}
+
+Player.propTypes = {
+    setShow: PropTypes.func.isRequired,
+    show: PropTypes.bool.isRequired
 }
