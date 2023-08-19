@@ -130,6 +130,7 @@
 
     .banner__content__song {
         width: 100%;
+        text-align: left;
         font-size: 3.5rem;
         font-weight: 600;
         color: var(--text-color-2);

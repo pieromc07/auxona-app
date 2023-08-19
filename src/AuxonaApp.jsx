@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Navigation, Player, Side } from "./auxona/components"
 import { navegacion } from "./auxona/libs"
 import { AuxonaRoutes } from "./auxona/routes"
@@ -13,12 +13,17 @@ export const AuxonaApp = () => {
     useEffect(() => {
         dispatch(getStarted())
     }, [dispatch])
+    const [sideShow, setSideShow] = useState(false);
+
+    const handleSideShow = () => {
+        setSideShow(!sideShow)
+    }
 
     return (
         <>
             <div className='wrapper'>
-                <Navigation />
-                <Side menu={navegacion} />
+                <Navigation sideShow={handleSideShow} />
+                <Side menu={navegacion}  show={sideShow} sideShow={handleSideShow} />
                 <main className='main'>
                     <AuxonaRoutes />
                 </main>
