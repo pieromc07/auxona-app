@@ -3,7 +3,7 @@ import { startLoading, setPlayer } from "../player";
 import { setChart } from "../chart";
 
 export const getStarted = () =>{
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         Chart().then((data) => {
             // NOTE:  Cargar Charts
             dispatch(setChart({
@@ -28,8 +28,6 @@ export const getStarted = () =>{
                     isLoading: false,
                 }));
             });
-
-
         });
     }
 }

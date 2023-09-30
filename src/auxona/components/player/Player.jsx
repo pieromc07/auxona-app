@@ -10,7 +10,7 @@ import { Cover } from './cover/Cover'
 
 import './Player.css'
 
-export const Player = ({show, setShow}) => {
+export const Player = ({ show, setShow }) => {
 
     const {
         youTubeId,

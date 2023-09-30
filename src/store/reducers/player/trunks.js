@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { TrackById } from "../../../api/Track";
+import { setHistory, setCurrentTrack } from "../history";
 import { startLoading, setPlayer } from "./player";
 
 // TODO:  Obtener la canción para el reproductor
@@ -20,6 +21,22 @@ export const getPlayer = (id = 0) => {
                     currentTime: 0,
                     youTubeId: data.youtube_id,
                     isLoading: false,
+                }));
+                dispatch(setHistory({
+                    cover: data.md5_image,
+                    title: data.title,
+                    artist: '',
+                    duration: 0,
+                    currentTime: 0,
+                    youTubeId: data.youtube_id,
+                }));
+                dispatch(setCurrentTrack({
+                    cover: data.md5_image,
+                    title: data.title,
+                    artist: '',
+                    duration: 0,
+                    currentTime: 0,
+                    youTubeId: data.youtube_id,
                 }));
             });
         }

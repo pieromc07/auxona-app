@@ -35,16 +35,18 @@ export const YoutubeEmbed = ({ embedId = 'E9gJknKWn18' }) => {
     }
 
     const handlePlay = () => {
+        console.log('handlePlay', player, isReady, isStarted)
         if (player && isReady) {
-            player.playVideo()
-            console.log('Play')
+            setTimeout(() => {
+                player.playVideo()
+            }, 100);
         }
     }
 
     const handlePause = () => {
-        if (player && isStarted) {
+        console.log('handlePause', player, isReady, isStarted)
+        if (player && isReady && isStarted) {
             player.pauseVideo()
-            console.log('Pause')
         }
     }
 
@@ -58,9 +60,27 @@ export const YoutubeEmbed = ({ embedId = 'E9gJknKWn18' }) => {
 
     const _onStateChange = (event) => {
         const { data } = event
-        console.log(data)
-    }
 
+        switch (data) {
+            case 1:
+                console.log('Play')
+                break;
+            case 2:
+                console.log('Pause')
+                break;
+            case 3:
+                console.log('Buffering')
+                break;
+            case 5:
+                console.log('Video Cued')
+                if(isPlaying)
+                    handlePlay()
+                break;
+            default:
+                break;
+        }
+    }
+    
     const _onPlay = (event) => {
         dispatch(setCurrentTime({ currentTime: player.getCurrentTime() }))
         dispatch(setStarted({ isStarted: true }))
