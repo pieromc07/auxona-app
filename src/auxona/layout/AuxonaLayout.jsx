@@ -5,18 +5,18 @@ import './AuxonaLayout.css'
 
 
 export const AuxonaLayout = ({ children }) => {
-    return (
-        <div className='wrapper'>
-            <Navigation />
-            <Side menu={navegacion} />
-            <main className='main'>
-                {children}
-            </main>
-            <Player />
-        </div>
-    );
+	return (
+		<div className='wrapper'>
+			<Navigation />
+			<Side menu={navegacion} />
+			<main className='main'>
+				{children}
+			</main>
+			<Player />
+		</div>
+	);
 }
 
 AuxonaLayout.propTypes = {
-    children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired
 }
