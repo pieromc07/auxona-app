@@ -1,0 +1,86 @@
+/* MEDIA QUERY XS */
+@media (min-width: 0px) {
+  .artist-detail{
+    padding-top: 2.25rem;
+    padding: 2.25rem 4.25rem 0 4.25rem;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .artist-detail__cover{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .artist-detail__content__top-tracks{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+/* MEDIA QUERY LG */
+@media (min-width: 992px) {
+  .artist-detail {
+    padding-top: 2.25rem;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .artist-detail__cover {
+    width: 100%;
+    height: 55%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .artist-detail__content{
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .artist-detail__content__top-tracks{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+
+  .artist-detail__content__top-tracks .boxrow{
+    width: 63.66%;
+    height: auto;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+  .artist-detail__content__top-tracks .boxrow .boxrow__content{
+   gap: .5rem;
+  }
+  .artist-detail__content__top-tracks .boxcolumn{
+    width: 36.33%;
+    height: auto;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .artist-detail__content__top-tracks .boxcolumn .boxcolumn__content{
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: .2rem;
+  }
+}
