@@ -2,7 +2,6 @@
 @media (min-width: 0px) {
   .artist-detail{
     padding-top: 2.25rem;
-    padding: 2.25rem 4.25rem 0 4.25rem;
     width: 100%;
     height: 100%;
     overflow-y: auto;
@@ -31,6 +30,7 @@
 @media (min-width: 992px) {
   .artist-detail {
     padding-top: 2.25rem;
+     padding: 2.25rem 4.25rem 0 4.25rem;
     width: 100%;
     height: auto;
     overflow-y: auto;
