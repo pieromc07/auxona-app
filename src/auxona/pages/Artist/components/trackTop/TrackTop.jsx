@@ -1,11 +1,39 @@
 import { PropTypes } from 'prop-types'
 import './TrackTop.css'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getPlayer, setPlay } from '../../../../../store/reducers/player'
 
-export const TrackTop = ({ title, md5_image }) => {
+export const TrackTop = ({ id, title, md5_image }) => {
+    const dispatch = useDispatch()
 
-    const [play, setPlay] = useState(false)
+	const { isPlaying, idDeezer } = useSelector(state => state.player)
+    const [playing, setPlaying] = useState(false)
     const [isfavorite, setIsfavorite] = useState(false)
+
+
+    const handleTogglePlay = () => {
+        setPlaying(!playing)
+        if (isPlaying) {
+            dispatch(setPlay({ isPlaying: false }))
+            if (idDeezer === id) {
+                return
+            }
+            dispatch(getPlayer(id))
+			setTimeout(() => {
+				dispatch(setPlay({ isPlaying: true }))
+			}, 2000);
+        } else {
+            if (idDeezer === id) {
+                dispatch(setPlay({ isPlaying: true }))
+                return
+            }
+            dispatch(getPlayer(id))
+			setTimeout(() => {
+				dispatch(setPlay({ isPlaying: true }))
+			}, 2000);
+        }
+    }
 
     return (
         <div className='au--tracktop'>
@@ -26,12 +54,12 @@ export const TrackTop = ({ title, md5_image }) => {
                             <i className='bi bi-heart-fill'></i>
                         </button>
                     }
-                    {!play ?
-                        <button className='au--tracktop--content__action--button' onClick={() => setPlay(!play)}>
+                    {!playing ?
+                        <button className='au--tracktop--content__action--button' onClick={handleTogglePlay}>
                             <i className='bi bi-play-fill play'></i>
                         </button>
                         :
-                        <button className='au--tracktop--content__action--button play' onClick={() => setPlay(!play)}>
+                        <button className='au--tracktop--content__action--button play' onClick={handleTogglePlay}>
                             <i className='bi bi-pause-fill'></i>
                         </button>
                     }
@@ -46,5 +74,6 @@ export const TrackTop = ({ title, md5_image }) => {
 
 TrackTop.propTypes = {
     title: PropTypes.string.isRequired,
-    md5_image: PropTypes.string.isRequired
+    md5_image: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
 }

@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const reducerPlayer = createSlice({
 	name: 'Player',
 	initialState: {
+		idDeezer: 0,
 		cover: '',
 		title: '',
 		artist: '',
@@ -23,6 +24,7 @@ export const reducerPlayer = createSlice({
 			state.isLoading = true;
 		},
 		setPlayer(state, action) {
+			state.idDeezer = action.payload.idDeezer;
 			state.isLoading = false;
 			state.cover = action.payload.cover;
 			state.title = action.payload.title;

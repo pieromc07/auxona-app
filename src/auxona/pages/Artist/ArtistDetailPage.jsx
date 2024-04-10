@@ -56,13 +56,25 @@ export const ArtistDetailPage = () => {
 
                 </TabPanel>
                 <TabPanel>
-                  Albums
+                  <BoxRow title="Albums">
+                    {artist.albums.map((album) => (
+                      <Card key={album.id} image={album.cover_xl} title={album.title} />
+                    ))}
+                  </BoxRow>
                 </TabPanel>
                 <TabPanel>
-                  Related Artists
+                  <BoxRow title="Related Artists">
+                    {artist.related.map((related) => (
+                      <Card key={related.id} image={related.picture_xl} title={related.name} />
+                    ))}
+                  </BoxRow>
                 </TabPanel>
                 <TabPanel>
-                  Playlists
+                  <BoxRow title="Playlists">
+                    {artist.playlist.map((playlist) => (
+                      <Card key={playlist.id} image={playlist.picture_xl} title={playlist.title} />
+                    ))}
+                  </BoxRow>
                 </TabPanel>
               </Tabs>
             </div>

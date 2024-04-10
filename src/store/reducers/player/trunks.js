@@ -14,6 +14,7 @@ export const getPlayer = (id = 0) => {
 			TrackById(id).then((data) => {
 				// NOTE:  Establecer la canción en el reproductor
 				dispatch(setPlayer({
+					idDeezer: data.deezer_id,
 					cover: data.md5_image,
 					title: data.title,
 					artist: '',

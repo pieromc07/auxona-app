@@ -13,8 +13,6 @@ import { oneFlow, setPosition } from '../../../store/reducers/history'
 
 export const Player = ({ show, setShow }) => {
 
-
-
 	const {
 		youTubeId,
 		cover,
@@ -53,6 +51,7 @@ export const Player = ({ show, setShow }) => {
 
 	const onForward = () => {
 		if (position === count - 1) {
+			// NOTE: Si es el ultimo elemento de la lista, Hacer una llamada a la API
 			dispatch(oneFlow())
 		} else {
 			dispatch(setPosition(position + 1))

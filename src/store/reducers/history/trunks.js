@@ -33,8 +33,6 @@ export const oneFlow = () => {
 						currentTime: 0,
 						youTubeId: res.youtube_id,
 					}));
-
-
 					dispatch(setPlay({ isPlaying: true }));
 				});
 			}

@@ -42,7 +42,11 @@ export const YoutubeEmbed = ({ embedId = 'E9gJknKWn18' }) => {
 	}
 
 	const handlePlay = () => {
-		console.log('handlePlay', player, isReady, isStarted)
+		console.log('handlePlay')
+		console.log('player', player)
+		console.log('isReady', isReady)
+		console.log('isStarted', isStarted)
+		console.log('isPlaying', isPlaying)
 		if (player && isReady) {
 			setTimeout(() => {
 				player.playVideo()
@@ -51,7 +55,11 @@ export const YoutubeEmbed = ({ embedId = 'E9gJknKWn18' }) => {
 	}
 
 	const handlePause = () => {
-		console.log('handlePause', player, isReady, isStarted)
+		console.log('handlePause')
+		console.log('player', player)
+		console.log('isReady', isReady)
+		console.log('isStarted', isStarted)
+		console.log('isPlaying', isPlaying)
 		if (player && isReady && isStarted) {
 			player.pauseVideo()
 		}
@@ -155,7 +163,6 @@ export const YoutubeEmbed = ({ embedId = 'E9gJknKWn18' }) => {
 			player.setVolume(volume)
 		}
 	}, [volume, isMuted])
-
 
 	const opts = {
 		height: '200',
